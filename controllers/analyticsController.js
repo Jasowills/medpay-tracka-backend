@@ -39,11 +39,15 @@ exports.getTopCategories = async (req, res) => {
             { $sort: { totalAmount: -1 } }
         ]);
 
-        res.status(200).json({ success: true, data: categories });
+        // Find the category with the highest total income
+        const highestIncomeCategory = categories.length > 0 ? categories[0] : null;
+
+        res.status(200).json({ success: true, data: { categories, highestIncomeCategory } });
     } catch (error) {
         res.status(400).json({ success: false, error: error.message });
     }
 };
+
 
 exports.getWeeklyIncomeExpense = async (req, res) => {
     try {
