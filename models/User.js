@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const UserSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String },
+    // Make email unique and required. instead of Username 
+    // people easily forget username 
     email: { type: String},
     firstName: { type: String },
     lastName: { type: String },
